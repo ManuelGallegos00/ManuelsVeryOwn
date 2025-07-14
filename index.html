@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Principal Supermercado Leoncio</title>
+  <link rel="stylesheet" href="estilos.css">
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url('image.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+    .panel {
+      background: rgba(255,255,255,0.97);
+      padding: 40px 38px 36px 38px;
+      border-radius: 18px;
+      box-shadow: 0 4px 18px rgba(51,122,255,0.14);
+      max-width: 420px;
+      width: 97vw;
+      text-align: center;
+    }
+    h1 {
+      color: #337aff;
+      font-size: 2.1em;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .panel-links {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      margin-top: 16px;
+    }
+    .panel-links a {
+      background: linear-gradient(90deg, #337aff 65%, #3ec6ff 100%);
+      color: #fff;
+      padding: 15px 0;
+      border-radius: 9px;
+      font-size: 1.14em;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 2px 7px rgba(80,130,230,.09);
+      letter-spacing: .01em;
+      transition: background .18s;
+      margin-bottom: 0;
+    }
+    .panel-links a:hover {
+      background: linear-gradient(90deg, #295ccc 60%, #20b2ea 100%);
+      opacity: .93;
+    }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <h1>Panel Principal Supermercado Leoncio</h1>
+    <div class="panel-links">
+      <a href="formulario_producto.php">Gestión de Productos</a>
+      <a href="formulario_proveedores.php">Gestión de Proveedores</a>
+      <a href="reporte_ejecutivo_ventas.php">Reporte Ejecutivo de Ventas</a>
+      <a href="reporte_ejecutivo_proveedores.php">Reporte Ejecutivo de Proveedores</a>
+    </div>
+  </div>
+</body>
+</html>

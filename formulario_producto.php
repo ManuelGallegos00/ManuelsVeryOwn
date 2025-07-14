@@ -1,0 +1,134 @@
+<?php include 'conexion.php'; ?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registrar Producto</title>
+  <link rel="stylesheet" href="estilos.css">
+  <style>
+    body {
+      min-height: 100vh;
+      background: url('image.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .form-container {
+      background: rgba(255,255,255,0.97);
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 34px 40px 28px 40px;
+      border-radius: 22px;
+      box-shadow: 0 2px 18px rgba(0,0,0,0.10);
+    }
+    .form-container label {
+      font-size: 1.15rem;
+      margin-top: 16px;
+      display: block;
+      font-weight: bold;
+      color: #222;
+    }
+    .form-container input[type="text"],
+    .form-container input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      margin-bottom: 8px;
+      border-radius: 7px;
+      border: 1.5px solid #cfd8dc;
+      background: #f8f9fa;
+    }
+    .checkbox-group label {
+      font-size: 1rem;
+      font-weight: normal;
+    }
+    .button-group {
+      margin-top: 18px;
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .button-group button, .button-group a {
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 10px 32px;
+      border-radius: 8px;
+      border: none;
+      background: #1976D2;
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .button-group button.limpiar {
+      background: #29b6f6;
+      color: #fff;
+    }
+    .button-group a.regresar {
+      background: #fff;
+      color: #1976D2;
+      border: 1.5px solid #1976D2;
+    }
+    .button-group a.consultar {
+      background: #388e3c;
+      color: #fff;
+      border: 1.5px solid #388e3c;
+    }
+  </style>
+  <script>
+    function soloNumeros(evt) {
+      var charCode = (evt.which) ? evt.which : evt.keyCode;
+      if (charCode === 8 || charCode === 9 || charCode === 37 || charCode === 39) return true;
+      if (charCode < 48 || charCode > 57) return false;
+      return true;
+    }
+    function confirmarEnvio() {
+      const nombre = document.getElementById("nombre").value.trim();
+      const marca = document.getElementById("marca").value.trim();
+      const precio = document.getElementById("precio").value.trim();
+      const cantidad = document.getElementById("cantidad").value.trim();
+      if (!nombre || !marca || !precio || !cantidad) {
+        alert("Debe de llenar todos los campos del formulario.");
+        return false;
+      }
+      const confirmacion = confirm("¿Deseas agregar el producto al inventario?");
+      if (confirmacion) {
+        document.getElementById("formProducto").submit();
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Registrar Producto</h1>
+    <form id="formProducto" action="guardar_producto.php" method="POST" autocomplete="off">
+      <label for="nombre">Nombre:</label>
+      <input type="text" name="nombre" id="nombre" required>
+
+      <label for="marca">Marca:</label>
+      <input type="text" name="marca" id="marca" required>
+
+      <label for="precio">Precio:</label>
+      <input type="number" name="precio" id="precio" min="1" step="0.01" required>
+
+      <label for="cantidad">Cantidad:</label>
+      <input type="text" name="cantidad" id="cantidad" required onkeypress="return soloNumeros(event)">
+
+      <div class="checkbox-group">
+        <label>Tipo de empaque (si es alimento):</label>
+        <input type="checkbox" name="tipo[]" value="enlatado"> Enlatado
+        <input type="checkbox" name="tipo[]" value="embolsado"> Embolsado
+        <input type="checkbox" name="tipo[]" value="en_caja"> En caja
+      </div>
+
+      <div class="button-group">
+        <button type="button" class="enviar" onclick="confirmarEnvio()">Enviar</button>
+        <button type="reset" class="limpiar">Limpiar</button>
+        <a href="index.html" class="regresar">Regresar</a>
+        <a href="consultar_productos.php" class="consultar">Consultar Productos</a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
