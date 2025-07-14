@@ -53,9 +53,7 @@ $marcaEjemplo = $rowMarca['Marca'] ?? 'Desconocida';
 <div class="reporte">
   <h2>Reporte Ejecutivo de Productos</h2>
   <p class="parrafo-principal">
-    C. GALLEGOS, gerente de la tienda <strong>"SUPERMERCADO LEONCIO</strong>,<br>
-    Se le informa que la tienda tiene <strong><?= $totalProductos ?></strong> productos almacenados en la tabla.<br>
-    Productos de la marca <strong><?= htmlspecialchars($marcaEjemplo) ?></strong>.<br>
+    C. GALLEGOS, gerente de la tienda <strong>SUPERMERCADO LEONCIO</strong>,<br>
     Se le informa que la tienda tiene <strong><?= $totalProductos ?></strong> productos almacenados en la tabla.<br>
     Productos de la marca <strong><?= htmlspecialchars($marcaEjemplo) ?></strong>.
   </p>
